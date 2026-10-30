@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BitcoinPIR</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; frame-src 'none'; form-action 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'">
+    <meta name="description" content="Look up Bitcoin addresses privately: the server answers without learning which address you asked about.">
+    <link rel="icon" href="/brand/bitcoinpir-mark.svg" type="image/svg+xml" />
+    <style>
+        @font-face { font-family: "PT Sans Narrow"; font-weight: 700; font-display: swap;
+            src: url(/fonts/pt-sans-narrow-700-latin.woff2) format("woff2"); }
+        @font-face { font-family: "PT Serif"; font-weight: 400; font-display: swap;
+            src: url(/fonts/pt-serif-400-latin.woff2) format("woff2"); }
+        :root {
+            --bg: #fcfcfc;
+            --header: #141110;
+            --ink: #2b2b2b;
+            --ink-mute: #666;
+            --line: #d6d6d6;
+            --orange: #f7931a;
+            --orange-dark: #e2820f;
+            --head: "PT Sans Narrow", "Arial Narrow", sans-serif;
+            --body: "PT Serif", Georgia, serif;
+        }
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; }
+        body { font-family: var(--body); font-size: 16px; line-height: 1.6; color: var(--ink); background: var(--bg); }
+        .topbar {
+            height: 72px; background: var(--header); border-bottom: 1px solid #555;
+        }
+        .topbar-inner {
+            max-width: 960px; height: 100%; margin: 0 auto; padding: 0 20px;
+            display: flex; align-items: center; gap: 24px;
+        }
+        .brand-logo { display: block; width: 150px; height: auto; }
+        .spacer { flex: 1; }
+        .nav {
+            font-family: var(--head); font-weight: 700; font-size: 17px; text-transform: uppercase;
+            color: #ddd; text-decoration: none;
+        }
+        .nav:hover { color: #fff; }
+
+        main { max-width: 920px; margin: 0 auto; padding: 88px 20px 64px; text-align: center; }
+        h1 { font-family: var(--head); font-weight: 700; font-size: 40px; line-height: 1.15; margin: 0 0 10px; }
+        .lede { color: var(--ink-mute); margin: 0 0 40px; }
+        .buttons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        .btn {
+            aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+            padding: 16px; border-radius: 3px; border: 1px solid var(--line);
+            background: #fff; color: var(--ink); text-decoration: none;
+            font-family: var(--head); font-weight: 700; font-size: 22px; line-height: 1.2;
+            text-transform: uppercase; letter-spacing: .01em;
+        }
+        .btn:hover { border-color: var(--ink-mute); }
+        .btn.primary { background: var(--orange); border-color: var(--orange); color: #fff; }
+        .btn.primary:hover { background: var(--orange-dark); }
+        @media (max-width: 640px) {
+            .buttons { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .btn { font-size: 18px; }
+            h1 { font-size: 30px; }
+            .topbar-inner { padding: 0 16px; }
+            main { padding: 48px 16px 40px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar"><div class="topbar-inner">
+        <a href="/" aria-label="BitcoinPIR home">
+            <img class="brand-logo" src="/brand/bitcoinpir-logo-dark.svg" width="430" height="128" alt="BitcoinPIR" />
+        </a>
+        <div class="spacer"></div>
+        <a class="nav" href="https://github.com/Bitcoin-PIR/Bitcoin-PIR">GitHub</a>
+    </div></header>
+
+    <main>
+        <h1>Look up Bitcoin addresses privately</h1>
+        <p class="lede">The server answers without learning which address you asked about.</p>
+        <nav class="buttons">
+            <a class="btn primary" href="https://app.bitcoinpir.org/">Look up an address</a>
+            <a class="btn" href="https://sdk.bitcoinpir.org/">Build with the SDK</a>
+            <a class="btn" href="https://github.com/Bitcoin-PIR/Bitcoin-PIR/blob/main/docs/OPERATOR_GUIDE.md">Run a node</a>
+            <a class="btn" href="https://app.bitcoinpir.org/reproduce.html">Verify what the servers run</a>
+        </nav>
+    </main>
+</body>
+</html>
