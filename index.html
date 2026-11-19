@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>BitcoinPIR</title>
     <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; frame-src 'none'; form-action 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'">
-    <meta name="description" content="Look up Bitcoin addresses privately: the server answers without learning which address you asked about.">
+    <meta name="description" content="Privately look up unspent Bitcoin outputs in the mainnet snapshot at block 976,083. Query in the browser, verify the snapshot, or connect with the native Rust SDK.">
     <link rel="icon" href="/brand/bitcoinpir-mark.svg" type="image/svg+xml" />
     <style>
         @font-face { font-family: "PT Sans Narrow"; font-weight: 700; font-display: swap;
@@ -43,7 +43,12 @@
 
         main { max-width: 920px; margin: 0 auto; padding: 88px 20px 64px; text-align: center; }
         h1 { font-family: var(--head); font-weight: 700; font-size: 40px; line-height: 1.15; margin: 0 0 10px; }
-        .lede { color: var(--ink-mute); margin: 0 0 40px; }
+        .lede { color: var(--ink-mute); margin: 0 0 12px; }
+        .coverage { max-width: 64ch; margin: 0 auto 32px; }
+        main p a { color: inherit; text-underline-offset: .16em; }
+        .nodes { border-top: 1px solid var(--line); margin-top: 36px; padding-top: 20px; text-align: left; }
+        .nodes h2 { font-family: var(--head); font-size: 24px; margin: 0 0 6px; }
+        .nodes p { max-width: 75ch; margin: 0; }
         .buttons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
         .btn {
             aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
@@ -53,7 +58,7 @@
             text-transform: uppercase; letter-spacing: .01em;
         }
         .btn:hover { border-color: var(--ink-mute); }
-        .btn.primary { background: var(--orange); border-color: var(--orange); color: #fff; }
+        .btn.primary { background: var(--orange); border-color: var(--orange); color: var(--header); }
         .btn.primary:hover { background: var(--orange-dark); }
         @media (max-width: 640px) {
             .buttons { grid-template-columns: repeat(2, 1fr); gap: 12px; }
@@ -76,12 +81,19 @@
     <main>
         <h1>Look up Bitcoin addresses privately</h1>
         <p class="lede">The server answers without learning which address you asked about.</p>
+        <p class="coverage">All four backends use the same <a href="https://app.bitcoinpir.org/proofs/trust-chain/snapshot_976083.json">Bitcoin mainnet snapshot at block 976,083</a>.
+            Results show outputs unspent at that block. Later payments and spends are not reflected.</p>
         <nav class="buttons">
             <a class="btn primary" href="https://app.bitcoinpir.org/">Look up an address</a>
             <a class="btn" href="https://sdk.bitcoinpir.org/">Build with the SDK</a>
             <a class="btn" href="https://github.com/Bitcoin-PIR/Bitcoin-PIR/blob/main/docs/OPERATOR_GUIDE.md">Run a node</a>
             <a class="btn" href="https://app.bitcoinpir.org/reproduce.html">Verify what the servers run</a>
         </nav>
+        <section class="nodes">
+            <h2>Run a node without your own domain</h2>
+            <p>For browser clients, <a href="https://github.com/Bitcoin-PIR/Bitcoin-PIR/blob/main/docs/OPERATOR_GUIDE.md#7-expose">Tailscale Funnel</a> gives your node a public WebSocket address.
+                Native Rust clients can instead connect with an <a href="https://github.com/Bitcoin-PIR/Bitcoin-PIR/tree/main/crates/sdk/client#iroh-native-rust-manually-selected-endpoint">Iroh ticket</a>, directly when possible or through a relay.</p>
+        </section>
     </main>
 </body>
 </html>
